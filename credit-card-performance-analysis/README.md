@@ -1,3 +1,3 @@
 # Credit Card Performance Analysis
 
-![Dashboard Preview](dashboard_preview.png)
+![Dashboard Preview](03_dashboard_preview.png)
