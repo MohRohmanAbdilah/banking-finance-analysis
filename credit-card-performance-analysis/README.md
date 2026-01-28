@@ -49,7 +49,7 @@ The ETL process was performed using SQL to ensure data integrity and prepare a s
 
 ## 🔗 Project Links
 * **Interactive Dashboard:** [View on Excel Web](https://1drv.ms/x/c/8479bc108aa6c48e/IQB8o09ceiddQKpcUI4LPf5UAVj2Rl3_AI-0f-c8I91ThSs?e=xXstJ5)
-* **Full Documentation:** [GitHub Repository](https://github.com/MohRohmanAbdilah/credit-card-performance-analysis)
+* **Full Documentation:** [GitHub Repository](https://github.com/MohRohmanAbdilah/01_extraction_query.sql)
 
 ## 📁 Repository Structure
 * 📄 `01_extraction_query.sql` : SQL script for data cleaning and integration.
