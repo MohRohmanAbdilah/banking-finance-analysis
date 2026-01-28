@@ -53,7 +53,7 @@ The ETL process was performed using SQL to ensure data integrity and prepare a s
 
 ## 📁 Repository Structure
 * 📄 `01_extraction_query.sql` : SQL script for data cleaning and integration.
-* 📊 `02_Banking_Performance_Dashboard.xlsx` : Master interactive dashboard file.
+* 📊 `02_credit_card_risk_performance_dashboard_jan2010.xlsx` : Master interactive dashboard file.
 * 🖼 `03_dashboard_preview.png` : Visual preview of the final dashboard.
 
 > **Technical Note:** The dataset in this repository has been sampled (10,000 rows) for upload purposes. The comprehensive analysis was performed on the original 1GB+ dataset.
