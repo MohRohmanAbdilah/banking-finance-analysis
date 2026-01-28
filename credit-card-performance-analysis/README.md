@@ -1,6 +1,6 @@
 # 💳 Credit Card Transaction Evaluation & Risk-Value Identification
 
-![Dashboard Preview](03_dashboard_preview.png)
+![Dashboard Preview](03_dashboard.png)
 
 ## 📌 1. Business Strategy
 **Target Industry:** Finance / Banking
