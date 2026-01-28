@@ -25,7 +25,11 @@ Analysis was conducted on three primary datasets totaling **144,907 rows**:
 * **Cards Data:** Information regarding credit limits and card brands.
 
 ### 🧹 Clean & Shape (SQL)
-The ETL process was performed using SQL to clean currency symbols, apply binary transformations to errors, and join the three core tables. The full script is available in `01_extraction_query.sql`.
+The ETL process was performed using SQL to ensure data integrity and prepare a structured fact table for analysis:
+* **Advanced Logic**: Utilized **Common Table Expressions (CTEs)** to create a clean, modular, and readable data pipeline.
+* **Currency Standardization**: Used `REPLACE` and `CAST` functions to convert string-based currency values into `Decimal(18,2)` for accurate numerical calculation.
+* **Risk Exclusion**: Implemented a security filter to exclude cards exposed on the **Dark Web**, focusing the analysis on safe and active accounts.
+* **Data Integration**: Successfully joined disparate tables using optimized `LEFT JOIN` operations.
 
 ### 📈 Analyze & Feature Engineering
 * **Segmentation:** Classified "Low Risk" customers (Credit Score >= 700 & DTI < 0.4).
@@ -43,9 +47,13 @@ The ETL process was performed using SQL to clean currency symbols, apply binary 
 
 ---
 
+## 🔗 Project Links
+* **Interactive Dashboard:** [View on Excel Web](https://1drv.ms/x/c/8479bc108aa6c48e/IQB8o09ceiddQKpcUI4LPf5UAVj2Rl3_AI-0f-c8I91ThSs?e=xXstJ5)
+* **Full Documentation:** [GitHub Repository](https://github.com/MohRohmanAbdilah/banking-finance-analysis)
+
 ## 📁 Repository Structure
 * 📄 `01_extraction_query.sql` : SQL script for data cleaning and integration.
-* 📊 `02_banking_performance_dashboard.xlsx` : Master interactive dashboard file.
-* 🖼️ `03_dashboard_preview.png` : Visual preview of the final dashboard.
+* 📊 `02_Banking_Performance_Dashboard.xlsx` : Master interactive dashboard file.
+* 🖼 `03_dashboard_preview.png` : Visual preview of the final dashboard.
 
 > **Technical Note:** The dataset in this repository has been sampled (10,000 rows) for upload purposes. The comprehensive analysis was performed on the original 1GB+ dataset.
