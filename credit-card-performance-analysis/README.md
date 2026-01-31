@@ -1,4 +1,4 @@
-# 💳 Credit Card Transaction Evaluation & Risk-Value Identification
+# 💳 Banking Revenue Growth: Optimizing 144K+ Transactions through Risk-Value Analysis
 
 ![Dashboard Preview](03_dashboard_preview.png)
 
