@@ -10,8 +10,15 @@
    - Currency fields contain '$' only (no thousand separators)
    - KPI calculations are performed outside SQL
    - Dark web cards are excluded to focus on active, safe cards
+
    ============================================================ */
 
+-- Data quality check at source level
+SELECT
+    COUNT(*) AS total_rows,
+    COUNT(DISTINCT id) AS unique_tx_id
+FROM transactions_data;
+-- Main Transformation Query
 WITH clean_transactions AS (
     SELECT
         id AS tx_id,
