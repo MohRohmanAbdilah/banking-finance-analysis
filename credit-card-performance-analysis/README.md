@@ -48,7 +48,7 @@ The ETL process was performed using SQL to ensure data integrity and prepare a s
 ---
 
 ## 🔗 Project Links
-* **Interactive Dashboard:** [View on Excel Web](https://1drv.ms/x/c/8479bc108aa6c48e/IQBJkO9q34rUTpU0huxS6jtlAUNTPiOF2mlmopKRu6urj9M?e=lBWnIe)
+* **Interactive Dashboard:** [View on Excel Web](https://1drv.ms/x/c/8479bc108aa6c48e/IQB8o09ceiddQKpcUI4LPf5UAVj2Rl3_AI-0f-c8I91ThSs)
 * **SQL Cleaning Script:** [View 01_extraction_query.sql](01_extraction_query.sql)
 
 ## 📁 Repository Structure
