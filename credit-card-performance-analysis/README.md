@@ -1,35 +1,38 @@
 # 💳 Credit Card Transaction Evaluation & Risk-Value Identification
 
 ## 📖 Project Background
-**Bank Nexus** (Fictional Entity) is a global financial services provider specializing in card products. As a Data Analyst in the Risk & Growth department, I was tasked with analyzing daily transaction performance and identifying revenue growth opportunities.
+**Bank Nexus** (Fictional Entity) is a global financial services provider. This project focuses on a critical business challenge: high-quality, low-risk customers have a critically low credit utilization rate (**0.58%**), preferring debit cards for the majority of their transactions. 
 
-Currently, the bank faces a challenge where high-quality, low-risk customers have extremely low credit utilization (**0.58%**), preferring to use debit cards for the majority of their spending. This project aims to dissect technical barriers and customer behavior to provide data-driven strategies for converting debit volume into credit instruments, thereby increasing the bank's profit margins.
+As a Data Analyst, I performed a full-cycle analysis to identify technical bottlenecks and behavioral patterns. The goal is to provide data-driven strategies to convert debit volume into credit usage, thereby increasing bank revenue without increasing credit risk.
 
-**The insights and recommendations focus on the following key areas:**
-* **Operational Health:** Identifying the root causes of transaction failures and system stability.
-* **Customer Spending Behavior:** Comparative analysis of spending volume between Debit vs. Credit.
-* **Revenue Opportunities:** Identifying conversion potential for low-risk debit users to switch to credit.
-* **System Reliability:** Analyzing the impact of technical glitches on the bank's daily cash flow.
+**Focus Areas:**
+* **Operational Health:** Identifying root causes of transaction failures.
+* **Customer Behavior:** Comparative analysis of Debit vs. Credit spending.
+* **Strategic Growth:** Identifying conversion potential for low-risk segments.
 
 ### 🛠️ Quick Links
-* **SQL Cleaning & Queries:** [View SQL Script](01_extraction_query.sql)
-* **Interactive Excel Dashboard:** [View on Excel Web](https://1drv.ms/x/c/8479bc108aa6c48e/IQDozt9mrlaiRbmw09UghvMnAVjxEFDrtiWzXOfo8vrEQO4?e=nY6FvI)
+* **SQL Cleaning & ETL Script:** [View SQL Script](01_extraction_query.sql)
+* **Interactive Excel Dashboard:** [View on Excel Web](https://1drv.ms/x/c/8479bc108aa6c48e/IQB8o09ceiddQKpcUI4LPf5UAVj2Rl3_AI-0f-c8I91ThSs?e=xXstJ5)
 
 ---
 
-## 📊 Data Structure & Initial Checks
-The dataset used in this analysis underwent a rigorous ETL (Extract, Transform, Load) process using SQL to ensure data integrity. The final database consists of **144,907 records** organized into three primary tables:
+## 📊 Data Structure & ETL Process
+The raw data was distributed across three relational tables. I utilized **SQL** to perform the entire ETL process, transforming over **144,907 rows** of raw data into a unified, analysis-ready flat table.
 
-* **Transactions Table:** Records every financial activity, transaction amount, timestamps, and error status codes.
-* **Users Table:** Contains customer risk profiles, credit scores (FICO), and Debt-to-Income (DTI) ratios.
-* **Cards Table:** Details regarding card specifications, instrument type (Debit/Credit), credit limits, and card brands.
+
+
+**Technical Execution in SQL:**
+* **Data Integration:** Executed optimized `LEFT JOIN` operations to merge **Transactions**, **Users**, and **Cards** tables.
+* **Cleaning & Standardization:** Used `REPLACE` and `CAST` functions to convert string-based currency into `Decimal(18,2)` for precise calculations.
+* **Advanced Pipeline:** Employed **Common Table Expressions (CTEs)** to maintain a modular and readable cleaning logic.
+* **Strategic Filtering:** Applied business logic to focus exclusively on **Low-Risk segments** (Credit Score >= 700 & DTI < 0.4) and filtered out compromised card data (Dark Web security exclusion).
 
 ---
 
 ## 📑 Executive Summary
 
 ### Overview of Findings
-The analysis reveals that while the bank maintains a large "safe" customer base (Credit Score >700), the credit limit utilization is at a critically low **0.58%**, indicating significant **"Idle Capacity."** Operational issues are a major bottleneck; on January 16th, transaction volume plummeted by **60%** due to 55 recorded technical glitches. Furthermore, the majority of transaction failures (**67%**) are driven by "Insufficient Balance," suggesting a need for better liquidity management tools for customers.
+Despite a healthy customer base, credit utilization is stagnant at **0.58%** due to a strong preference for Debit cards ($16,227 total spend). A significant operational finding revealed that on January 16th, transaction volume dropped by **60%** due to system glitches. Furthermore, **67%** of failures are caused by "Insufficient Balance," highlighting a gap in real-time customer communication.
 
 ![Dashboard Preview](03_dashboard_preview.png)
 
@@ -38,28 +41,27 @@ The analysis reveals that while the bank maintains a large "safe" customer base 
 ## 🔍 Insights Deep Dive
 
 ### Category 1: Operational Efficiency & Root Cause Analysis
-* **Primary Failure Driver:** "Insufficient Balance" is the number one cause of transaction declines, accounting for **298 cases**. This suggests customers are often unaware of their available balance before attempting a purchase.
-* **Technical Glitches:** There were **55 pure system failures** recorded. While lower in volume than balance issues, these glitches directly impact customer trust and reliability during the checkout process.
+* **Primary Failure Driver:** "Insufficient Balance" accounts for **298 cases**, suggesting customers lack real-time visibility of their funds.
+* **Technical Health:** **55 pure system glitches** were identified. While fewer in number, they correlate directly with major drops in daily spending volume.
 
 ### Category 2: Daily Spending Activity & Volume Patterns
-* **System Anomaly:** Daily spending volume dropped from its peak of $2,628 to just **$759.91** on January 16th.
-* **Downtime Correlation:** This sharp decline occurred exactly when the system recorded its highest frequency of technical glitches. This proves that system stability is a crucial factor in maintaining consistent daily transaction flow.
+* **The "Jan 16th" Anomaly:** Spending plummeted to **$759.91** from a peak of $2,628. 
+* **Reliability Correlation:** This decline is perfectly aligned with the peak of technical glitches, proving that infrastructure stability is the primary driver of consistent revenue.
 
-### Category 3: Total Spending by Card Type (Debit vs. Credit)
-* **Debit Dominance:** Spending through Debit cards reached **$16,227.72**, significantly outpacing Credit cards which totaled only **$9,611.76**.
-* **Conversion Opportunity:** Since these customers hold high credit scores (>700), the bank has a massive opportunity to shift this debit volume toward credit instruments to increase profit margins without significantly increasing credit risk.
+### Category 3: Total Spending by Card Type
+* **Debit Dominance:** Total Debit spending ($16,227.72) is nearly double that of Credit ($9,611.76).
+* **Conversion Potential:** Since these users are high-credit-score individuals, they represent a prime target for credit-focused loyalty incentives.
 
 ---
 
 ## 🚀 Recommendations
-Based on the findings above, I recommend the following strategic actions to the management team:
-* **Real-time Balance Notifications:** Implement automated low-balance alerts to customer apps to reduce transaction failures caused by "Insufficient Balance."
-* **Credit Activation Incentives:** Launch promotional programs (such as 1-2% cashback or reward points) specifically for credit card transactions to encourage low-risk customers to shift away from debit usage.
-* **Infrastructure Audit & Upgrade:** Conduct an immediate audit of the transaction authorization system to eliminate the technical glitches that caused a 60% loss in transaction volume in a single business day.
+* **Real-time Liquidity Alerts:** Implement automated "Low Balance" push notifications to reduce transaction declines.
+* **Credit Conversion Incentives:** Launch cashback or reward programs specifically for the Low-Risk segment to shift spend from Debit to Credit.
+* **Infrastructure Audit:** Prioritize IT system stability to eliminate glitches that cause 60% revenue dips in a single day.
 
 ---
 
 ## ⚠️ Assumptions and Caveats
-* **Data Selection:** The analysis exclusively covers customers with a Credit Score >= 700 and a Debt-to-Income (DTI) ratio < 0.4.
-* **Security Exclusion:** Cards identified as compromised on the *Dark Web* during security audits were fully removed from the dataset to ensure the validity of active customer data.
-* **Currency:** All monetary values are expressed in USD.
+* **Filtered Scope:** Analysis is restricted to active, safe, and low-risk customer segments.
+* **Currency:** All figures are in USD.
+* **Security:** Compromised cards were excluded during the SQL processing phase.
