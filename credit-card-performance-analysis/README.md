@@ -1,34 +1,35 @@
 # 💳 Credit Card Transaction Evaluation & Risk-Value Identification
 
 ## 📖 Project Background
-Sebagai seorang Data Analyst di industri perbankan, saya ditugaskan untuk menganalisis perilaku transaksi nasabah. Fokus utama proyek ini adalah mengidentifikasi peluang untuk meningkatkan penggunaan kartu kredit pada segmen nasabah berisiko rendah (Low-Risk) tanpa meningkatkan potensi gagal bayar.
+**Bank Nexus** (Fictional Entity) is a global financial services provider specializing in card products. As a Data Analyst in the Risk & Growth department, I was tasked with analyzing daily transaction performance and identifying revenue growth opportunities.
 
-Saat ini, bank melihat adanya ketimpangan di mana nasabah dengan profil kredit sehat (Credit Score >700) justru lebih sering menggunakan kartu debit. Proyek ini bertujuan untuk menggali hambatan teknis dan memberikan rekomendasi strategi berbasis data untuk mengonversi volume transaksi debit menjadi kredit.
+Currently, the bank faces a challenge where high-quality, low-risk customers have extremely low credit utilization (**0.58%**), preferring to use debit cards for the majority of their spending. This project aims to dissect technical barriers and customer behavior to provide data-driven strategies for converting debit volume into credit instruments, thereby increasing the bank's profit margins.
 
-**Insights dan rekomendasi difokuskan pada area berikut:**
-* **Category 1: Transaction Reliability:** Analisis kegagalan transaksi dan dampaknya terhadap arus kas.
-* **Category 2: Customer Spending Behavior:** Perbandingan penggunaan antara instrumen Debit dan Kredit.
-* **Category 3: Credit Utilization:** Evaluasi efektivitas limit kredit yang diberikan kepada nasabah aman.
-* **Category 4: Operational System Health:** Dampak gangguan teknis terhadap volume transaksi harian.
+**The insights and recommendations focus on the following key areas:**
+* **Operational Health:** Identifying the root causes of transaction failures and system stability.
+* **Customer Spending Behavior:** Comparative analysis of spending volume between Debit vs. Credit.
+* **Revenue Opportunities:** Identifying conversion potential for low-risk debit users to switch to credit.
+* **System Reliability:** Analyzing the impact of technical glitches on the bank's daily cash flow.
 
 ### 🛠️ Quick Links
-* **SQL Queries (Cleaning & Analysis):** [Link ke file .sql Anda]
-* **Interactive Excel Dashboard:** [Link ke file Excel/OneDrive Anda]
+* **SQL Cleaning & Queries:** [View SQL Script](01_extraction_query.sql)
+* **Interactive Excel Dashboard:** [View on Excel Web](https://1drv.ms/x/c/8479bc108aa6c48e/IQB8o09ceiddQKpcUI4LPf5UAVj2Rl3_AI-0f-c8I91ThSs?e=xXstJ5)
 
 ---
 
 ## 📊 Data Structure & Initial Checks
-Struktur database utama terdiri dari tiga tabel dengan total data mencapai **144,907 baris**:
-1. **Transactions Table:** Berisi detail nominal, stempel waktu, dan status error transaksi.
-2. **Users Table:** Berisi profil risiko, skor kredit, dan rasio utang (DTI).
-3. **Cards Table:** Berisi informasi limit kredit, jenis kartu, dan brand (Visa, Mastercard, dll).
+The dataset used in this analysis underwent a rigorous ETL (Extract, Transform, Load) process using SQL to ensure data integrity. The final database consists of **144,907 records** organized into three primary tables:
+
+* **Transactions Table:** Records every financial activity, transaction amount, timestamps, and error status codes.
+* **Users Table:** Contains customer risk profiles, credit scores (FICO), and Debt-to-Income (DTI) ratios.
+* **Cards Table:** Details regarding card specifications, instrument type (Debit/Credit), credit limits, and card brands.
 
 ---
 
 ## 📑 Executive Summary
 
 ### Overview of Findings
-Analisis menunjukkan bahwa nasabah "Low-Risk" memiliki **Credit Utilization Rate** yang sangat rendah, yaitu hanya **0.58%**, sementara volume belanja didominasi oleh kartu debit sebesar **$16,227**. Selain itu, ditemukan korelasi langsung antara gangguan sistem (*technical glitches*) dengan penurunan drastis volume transaksi sebesar **60%** pada tanggal 16 Januari. Masalah utama kegagalan transaksi adalah **Insufficient Balance** (298 kasus), yang menunjukkan perlunya sistem notifikasi saldo yang lebih proaktif.
+The analysis reveals that while the bank maintains a large "safe" customer base (Credit Score >700), the credit limit utilization is at a critically low **0.58%**, indicating significant **"Idle Capacity."** Operational issues are a major bottleneck; on January 16th, transaction volume plummeted by **60%** due to 55 recorded technical glitches. Furthermore, the majority of transaction failures (**67%**) are driven by "Insufficient Balance," suggesting a need for better liquidity management tools for customers.
 
 ![Dashboard Preview](03_dashboard_preview.png)
 
@@ -36,32 +37,29 @@ Analisis menunjukkan bahwa nasabah "Low-Risk" memiliki **Credit Utilization Rate
 
 ## 🔍 Insights Deep Dive
 
-### Category 1: Root Cause Analysis of Transaction Failures
-* **Dominasi Saldo Tidak Cukup:** "Insufficient Balance" adalah pendorong utama penolakan transaksi, terhitung sebanyak **298 kasus** (67% dari total error).
-* **Hambatan Teknis:** Terdapat **55 kasus Technical Glitch** yang menghalangi nasabah untuk bertransaksi meskipun mereka memiliki dana/limit yang cukup.
+### Category 1: Operational Efficiency & Root Cause Analysis
+* **Primary Failure Driver:** "Insufficient Balance" is the number one cause of transaction declines, accounting for **298 cases**. This suggests customers are often unaware of their available balance before attempting a purchase.
+* **Technical Glitches:** There were **55 pure system failures** recorded. While lower in volume than balance issues, these glitches directly impact customer trust and reliability during the checkout process.
 
 ### Category 2: Daily Spending Activity & Volume Patterns
-* **Anomali Volume:** Pada 16 Januari 2010, volume transaksi anjlok menjadi **$759.91**, turun drastis dari rata-rata harian yang berada di kisaran $1,500 - $1,900.
-* **Dampak Downtime:** Penurunan ini bertepatan dengan tercatatnya 55 gangguan teknis, yang membuktikan bahwa stabilitas sistem adalah kunci utama dalam menjaga volume belanja harian.
+* **System Anomaly:** Daily spending volume dropped from its peak of $2,628 to just **$759.91** on January 16th.
+* **Downtime Correlation:** This sharp decline occurred exactly when the system recorded its highest frequency of technical glitches. This proves that system stability is a crucial factor in maintaining consistent daily transaction flow.
 
-### Category 3: Total Spending by Card Type
-* **Preferensi Debit:** Nasabah lebih nyaman menggunakan Debit ($16,227) dibandingkan Credit ($9,611). 
-* **Potensi Revenue:** Karena nasabah ini adalah segmen berisiko rendah (Credit Score >700), bank kehilangan potensi pendapatan dari bunga dan biaya transaksi kredit yang seharusnya bisa dioptimalkan.
-
-### Category 4: Credit Utilization Rate
-* **Idle Capacity:** Angka pemakaian kredit sebesar **0.58%** menunjukkan bahwa limit kredit yang diberikan tidak dimanfaatkan secara maksimal. Ini menunjukkan produk kartu kredit saat ini kurang kompetitif atau kurang menarik dibandingkan kartu debit bagi nasabah tersebut.
+### Category 3: Total Spending by Card Type (Debit vs. Credit)
+* **Debit Dominance:** Spending through Debit cards reached **$16,227.72**, significantly outpacing Credit cards which totaled only **$9,611.76**.
+* **Conversion Opportunity:** Since these customers hold high credit scores (>700), the bank has a massive opportunity to shift this debit volume toward credit instruments to increase profit margins without significantly increasing credit risk.
 
 ---
 
 ## 🚀 Recommendations
-Berdasarkan temuan di atas, saya merekomendasikan langkah-langkah berikut:
-* **Sistem Notifikasi Real-Time:** Mengimplementasikan peringatan saldo rendah (low-balance alerts) untuk membantu nasabah menghindari kegagalan transaksi "Insufficient Balance".
-* **Strategi Insentif Kredit:** Meluncurkan program loyalitas seperti cashback atau poin reward khusus untuk transaksi kartu kredit guna mendorong perpindahan penggunaan dari Debit ke Credit.
-* **Audit Infrastruktur IT:** Melakukan pemeliharaan sistem secara berkala untuk meminimalkan *technical glitch* yang terbukti menyebabkan kehilangan volume transaksi hingga 60% dalam sehari.
+Based on the findings above, I recommend the following strategic actions to the management team:
+* **Real-time Balance Notifications:** Implement automated low-balance alerts to customer apps to reduce transaction failures caused by "Insufficient Balance."
+* **Credit Activation Incentives:** Launch promotional programs (such as 1-2% cashback or reward points) specifically for credit card transactions to encourage low-risk customers to shift away from debit usage.
+* **Infrastructure Audit & Upgrade:** Conduct an immediate audit of the transaction authorization system to eliminate the technical glitches that caused a 60% loss in transaction volume in a single business day.
 
 ---
 
 ## ⚠️ Assumptions and Caveats
-* **Data Filtering:** Data telah difilter untuk hanya menyertakan nasabah dengan Credit Score >= 700 dan DTI < 0.4 untuk fokus pada segmen berisiko rendah.
-* **Security Exclusion:** Kartu yang terindikasi bocor di *Dark Web* telah dihapus dari dataset untuk memastikan akurasi data transaksi yang sah.
-* **Missing Data:** Transaksi dengan status error yang tidak terdefinisi dikeluarkan dari analisis Root Cause.
+* **Data Selection:** The analysis exclusively covers customers with a Credit Score >= 700 and a Debt-to-Income (DTI) ratio < 0.4.
+* **Security Exclusion:** Cards identified as compromised on the *Dark Web* during security audits were fully removed from the dataset to ensure the validity of active customer data.
+* **Currency:** All monetary values are expressed in USD.
