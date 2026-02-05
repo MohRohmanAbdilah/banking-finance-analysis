@@ -1,6 +1,6 @@
-# 💳 Credit Card Transaction Evaluation & Risk-Value Identification
+# Credit Card Transaction Evaluation & Risk-Value Identification
 
-## 📖 Project Background
+## Project Background
 **Bank Nexus** (Fictional Entity) is a global financial services provider. This project focuses on a critical business challenge: high-quality, low-risk customers have a critically low credit utilization rate (**0.58%**), preferring debit cards for the majority of their transactions. 
 
 As a Data Analyst, I performed a full-cycle analysis to identify technical bottlenecks and behavioral patterns. The goal is to provide data-driven strategies to convert debit volume into credit usage, thereby increasing bank revenue without increasing credit risk.
@@ -10,13 +10,13 @@ As a Data Analyst, I performed a full-cycle analysis to identify technical bottl
 * **Customer Behavior:** Comparative analysis of Debit vs. Credit spending.
 * **Strategic Growth:** Identifying conversion potential for low-risk segments.
 
-### 🛠️ Quick Links
+### Quick Links
 * **SQL Cleaning & ETL Script:** [View SQL Script](01_extraction_query.sql)
 * **Interactive Excel Dashboard:** [View on Excel Web](https://1drv.ms/x/c/8479bc108aa6c48e/IQDozt9mrlaiRbmw09UghvMnAVjxEFDrtiWzXOfo8vrEQO4?e=oUKGtN)
 
 ---
 
-## 📊 Data Structure & ETL Process
+## Data Structure & ETL Process
 The raw data was distributed across three relational tables. I utilized **SQL** to perform the entire ETL process, transforming over **144,907 rows** of raw data into a unified, analysis-ready flat table.
 
 
@@ -29,7 +29,7 @@ The raw data was distributed across three relational tables. I utilized **SQL** 
 
 ---
 
-## 📑 Executive Summary
+## Executive Summary
 
 ### Overview of Findings
 Despite a healthy customer base, credit utilization is stagnant at **0.58%** due to a strong preference for Debit cards ($16,227 total spend). A significant operational finding revealed that on January 16th, transaction volume dropped by **60%** due to system glitches. Furthermore, **67%** of failures are caused by "Insufficient Balance," highlighting a gap in real-time customer communication.
@@ -38,7 +38,7 @@ Despite a healthy customer base, credit utilization is stagnant at **0.58%** due
 
 ---
 
-## 🔍 Insights Deep Dive
+## Insights Deep Dive
 
 ### Category 1: Operational Efficiency & Root Cause Analysis
 * **Primary Failure Driver:** "Insufficient Balance" accounts for **298 cases**, suggesting customers lack real-time visibility of their funds.
@@ -54,14 +54,14 @@ Despite a healthy customer base, credit utilization is stagnant at **0.58%** due
 
 ---
 
-## 🚀 Recommendations
+## Recommendations
 * **Real-time Liquidity Alerts:** Implement automated "Low Balance" push notifications to reduce transaction declines.
 * **Credit Conversion Incentives:** Launch cashback or reward programs specifically for the Low-Risk segment to shift spend from Debit to Credit.
 * **Infrastructure Audit:** Prioritize IT system stability to eliminate glitches that cause 60% revenue dips in a single day.
 
 ---
 
-## ⚠️ Assumptions and Caveats
+## Assumptions and Caveats
 * **Filtered Scope:** Analysis is restricted to active, safe, and low-risk customer segments.
 * **Currency:** All figures are in USD.
 * **Security:** Compromised cards were excluded during the SQL processing phase.
