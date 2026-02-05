@@ -12,7 +12,7 @@ As a Data Analyst, I performed a full-cycle analysis to identify technical bottl
 
 ### 🛠️ Quick Links
 * **SQL Cleaning & ETL Script:** [View SQL Script](01_extraction_query.sql)
-* **Interactive Excel Dashboard:** [View on Excel Web](https://1drv.ms/x/c/8479bc108aa6c48e/IQB8o09ceiddQKpcUI4LPf5UAVj2Rl3_AI-0f-c8I91ThSs?e=xXstJ5)
+* **Interactive Excel Dashboard:** [View on Excel Web](https://1drv.ms/x/c/8479bc108aa6c48e/IQDozt9mrlaiRbmw09UghvMnAVjxEFDrtiWzXOfo8vrEQO4?e=oUKGtN)
 
 ---
 
